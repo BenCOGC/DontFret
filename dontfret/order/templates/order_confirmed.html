@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Order Confirmed - Don't Fret
+{% endblock %}
+
+{% block content %}
+    <div>
+        <div class="text-center">
+            <br>
+            <br>
+            <h1 class="text-center my_title">
+                Thank you for placing an order with us!
+            </h1>
+            <br>
+            <br>
+            <p>Your order number is: <b>{{ customer_order.id }}</b></p>
+            <br>
+            <p>
+                Your order has been placed and will begin processing right away. We have also sent an email confirmation that details the order you have just placed.
+            </p>
+        </div>
+    </div>
+    <br>
+    <br>
+{% endblock %}

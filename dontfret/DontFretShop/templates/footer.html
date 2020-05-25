@@ -1,0 +1,14 @@
+<div class="footer navbar-fixed-bottom my_footer">
+	<p class="text-center">Don't Fret® - 2020</p>
+	<p style="text-align: right">
+		{% for group in request.user.groups.all %} <!-- Retrieve user group -->
+    	{%  if 'Stock Controller' == group.name or 'Store Assistant' == group.name %}  <!-- If user is staff member allow creation of new staff -->
+		<a href="{% url 'signup-storeassistant' %}">Create A New Store Assistant</a>
+		 |
+		<a href="{% url 'signup-stockcontroller' %}">Create A New Stock Controller</a>
+		 |
+		{% endif %}
+		{% endfor %}
+		<a href="{% url 'about-us' %}">About Us</a>
+	</p>
+</div>

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Order Refunded - Don't Fret
+{% endblock %}
+
+{% block content %}
+    <div>
+        <div class="text-center">
+            <br>
+            <br>
+            {% if user.is_staff %}
+            <h1 class="text-center my_title">
+                The customer order has been refunded!
+            </h1>
+            {% else %}
+            <h1 class="text-center my_title">
+                Your order has been refunded!
+            </h1>
+            {% endif %}
+            <br>
+            <br>
+            <p>The order has been refunded successfully.</p>
+        </div>
+    </div>
+    <br>
+    <br>
+{% endblock %}

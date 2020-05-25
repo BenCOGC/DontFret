@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block metadescription %}
+    Edit your user details.
+{% endblock %}
+
+{% block title %}
+    Edit Account Details - Don't Fret
+{% endblock %}
+
+{% block content %}
+    <div>
+        {% if not form.is_valid %}
+            <div class="mx-auto">
+                <br>
+                <h1 class="my_title text-center">Edit My Details</h1>
+                <br>
+                <div class="col-9 col-sm-9 col-md-6 col-lg-5 mx-auto bg-light">
+                    <br>
+                    <p>Please fill in your updated details:</p>
+                    <form method="POST">
+                        {% csrf_token %} <!-- Additional security -->
+                        <p>{{ form | crispy }}</p>
+                        <button type="submit" class="btn btn-secondary">Update Account</button>
+                    </form>
+                    <br>
+                </div>
+            </div>
+        {% else %}
+            <div class="mx-auto">
+                <br>
+                <h1 class="my_title text-center">Your account has been updated successfully!</h1>
+                <br>
+                <div>
+                    <p>
+                        <a href="{% url 'DontFretShop:featuredProdCat' %}">Continue Shopping</a>
+                    </p>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+    <br>
+{% endblock %}

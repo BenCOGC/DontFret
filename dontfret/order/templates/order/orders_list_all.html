@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    All Orders - Don't Fret
+{% endblock %}
+
+{% block content %}
+    <div>
+        <div class="text-center">
+            <br>
+            <h1 class="text-center my_title">All Orders Placed</h1>
+            <br>
+            {% if order_details %}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Order Number</th>
+                        <th>Customer Order Name</th>
+                        <th>Customer Order  Email</th>
+                        <th>Order Date</th>
+                        <th>Total Amount</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                        <th>Refund Option</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in order_details %}
+                    <tr>
+                        <td>{{ order.id }}</td>
+                        <td>{{ order.billingName }}</td>
+                        <td>{{ order.emailAddress }}</td>
+                        <td>{{ order.order_date|date:"d M Y" }}</td>
+                        <td>{{ order.total }}</td>
+                        {% if order.is_refunded == True %}
+                        <td>Refunded</td>
+                        {% else %}
+                        <td><i class="fas fa-check"></i>&nbsp;Complete</td>
+                        {% endif %}
+                        <td><a href="{% url 'order:order_detail' order.id %}">View Order</a></td>
+                        {% if order.is_refunded == True %}
+                        <td style="color:green">Already Refunded!</td>
+                        {% else %}
+                        <td><a href="{% url 'order:refund_order' order.id %}">Refund Order</a></td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>You have not placed any orders yet.<br><br><a href="{% url 'DontFretShop:featuredProdCat' %}" class="btn btn-secondary">
+                Back To Home Page</a></p>
+            {% endif %}
+        </div>
+    </div>
+    <br>
+    <br>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Order Refund Rejected - Don't Fret
+{% endblock %}
+
+{% block content %}
+    <div>
+        <div class="text-center">
+            <br>
+            <br>
+            {% if user.is_staff %}
+            <h1 class="text-center my_title" style="color:red">
+                ORDER CANNOT BE REFUNDED
+            </h1>
+            {% else %}
+            <h1 class="text-center my_title" style="color:red">
+                Unfortunately you cannot refund your order.
+            </h1>
+            {% endif %}
+            <br>
+            <br>
+            <p>Refunds must be requested within 24 hours of making the order.</p>
+        </div>
+    </div>
+    <br>
+    <br>
+{% endblock %}
